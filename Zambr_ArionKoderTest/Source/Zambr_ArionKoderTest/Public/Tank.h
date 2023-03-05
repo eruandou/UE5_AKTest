@@ -13,6 +13,7 @@ class UInputAction;
 class UInputMappingContext;
 struct FInputActionInstance;
 class UShootComponent;
+class UHealthComponent;
 UCLASS()
 class ZAMBR_ARIONKODERTEST_API ATank : public APawn
 {
@@ -68,6 +69,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	UShootComponent* ShootComponent;
+	UPROPERTY(EditDefaultsOnly)
+	UHealthComponent* HealthComponent;
 	void Move(const FInputActionInstance& Instance);
 	void Rotate(const FInputActionInstance& Instance);
 	UFUNCTION(BlueprintCallable, meta=(ToolTip = "Shoot in the direction of the camera"))
@@ -79,7 +82,7 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	FORCEINLINE UHealthComponent* GetHealthComponent() const { return HealthComponent; }
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 };

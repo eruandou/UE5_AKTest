@@ -5,6 +5,7 @@
 #include "EnhancedInputSubsystems.h"
 #include <EnhancedInput/Public/EnhancedInputComponent.h>
 
+#include "HealthComponent.h"
 #include "ShootComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Components/BoxComponent.h"
@@ -17,7 +18,7 @@ ATank::ATank()
 
 	//Initialize Components
 	ShootComponent = CreateDefaultSubobject<UShootComponent>(TEXT("Shoot component"));
-
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health system"));
 	//Initialize Root component
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
 	SetRootComponent(CollisionBox);
